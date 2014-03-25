@@ -14,10 +14,17 @@ hibernate {
 // environment specific settings
 environments {
     development {
-        dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
-        }
+	dataSource {
+            dbCreate = "update"
+            driverClassName = "com.mysql.jdbc.Driver"
+            dialect=org.hibernate.dialect.MySQL5Dialect
+            username = "dbuser"
+            password = "dbuser"
+            url = "jdbc:mysql://localhost/listingsApplication?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
+            pooled = true
+        }        
+
+
     }
     test {
         dataSource {
